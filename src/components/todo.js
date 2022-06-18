@@ -9,7 +9,7 @@ const Todo = (props) => {
     }
     const update = (e) => {
         setEditable(false);
-        props.update(e.currentTarget.id,document.getElementsByTagName('li')[0].innerText);
+        props.update(e.currentTarget.id,document.getElementsByName(e.currentTarget.id+'li')[0].innerText);
     }
     return (
         <table>
@@ -19,7 +19,7 @@ const Todo = (props) => {
             <input type="checkbox" name="complete" style={{height:'25px', width:'25px' }} onChange={props.changestatus} id={props.data.id} checked={props.data.complete} /> 
         </td>
         <td style={{width:'100%'}}>
-            <li className='list-group-item p-2 m-1' id={props.data.id} value={props.data.task} onClick={edit} contentEditable={editable} style={{fontSize:'18px', textDecorationLine: props.data.complete ?'line-through' : 'none'}}>
+            <li className='list-group-item p-2 m-1' name={props.data.id+'li'} id={props.data.id} value={props.data.task} onClick={edit} contentEditable={editable} style={{fontSize:'18px', textDecorationLine: props.data.complete ?'line-through' : 'none'}}>
             {props.data.task}
             </li>
         </td>

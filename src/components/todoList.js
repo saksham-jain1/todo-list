@@ -25,7 +25,6 @@ const TodoList = () => {
     );
   };
   const update = (e,y) =>{
-    console.log(y);
     setData(
       data.filter((curr) => {
         if (curr.id == e) {
