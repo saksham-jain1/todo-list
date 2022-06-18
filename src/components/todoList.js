@@ -8,6 +8,7 @@ const localstorage = () => {
   return [];
 };
 
+
 const TodoList = () => {
   const [task, setTask] = useState("");
   const [index, setIndex] = useState(localStorage.getItem("index"));
@@ -23,6 +24,18 @@ const TodoList = () => {
       })
     );
   };
+  const update = (e,y) =>{
+    setData(
+      data.filter((curr) => {
+        if (curr.id == e) {
+          curr.task = y;
+          return curr;
+        } else {
+          return curr;
+        }
+      })
+    );
+  }
   const changestatus = (e) => {
     setData(
       data.filter((curr) => {
@@ -62,7 +75,8 @@ const TodoList = () => {
   useEffect(() => {
     localStorage.setItem("data", JSON.stringify(data));
     localStorage.setItem("index", index);
-  }, [data]);
+    return '';
+  }, [index,data]);
 
   return (
     <div
@@ -106,8 +120,10 @@ const TodoList = () => {
               changestatus={changestatus}
               data={curr}
               deleteTask={deleteData}
+              update={update}
             />
           );
+          return '';
         })}
       </ul>
       <h4 className="text-center">Completed Tasks</h4>
@@ -123,8 +139,10 @@ const TodoList = () => {
               changestatus={changestatus}
               data={curr}
               deleteTask={deleteData}
+              update={update}
             />
           );
+          return '';
         })}
       </ul>
     </div>
