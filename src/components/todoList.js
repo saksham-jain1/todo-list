@@ -8,11 +8,12 @@ const localstorage = () => {
   return [];
 };
 
-
 const TodoList = () => {
   const [task, setTask] = useState("");
-  const [index, setIndex] = useState(localStorage.getItem("index"));
+  const [index, setIndex] = useState(localStorage.getItem("index")?localStorage.getItem("index"):1);
   const [data, setData] = useState(localstorage());
+
+  
   const deleteData = (e) => {
     setData(
       data.filter((curr) => {
